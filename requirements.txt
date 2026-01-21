@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+qdrant-client
+langchain
+langchain-community
+langchain-core
+pypdf
+psycopg2-binary
+httpx
+python-dotenv
+beautifulsoup4
+markdown
+sentence-transformers
+# For faster embeddings if using fastembed
+fastembed

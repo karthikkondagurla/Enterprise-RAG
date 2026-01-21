@@ -1,0 +1,5 @@
+This is a test document for the Enterprise RAG System.
+The system is designed to provide accurate answers to customer support queries.
+It uses Qwen 3 as the LLM and Qdrant as the vector store.
+If you see this text in the retrieval, the system is working correctly.
+Error 504 on the payment gateway is usually caused by a timeout on the load balancer.
