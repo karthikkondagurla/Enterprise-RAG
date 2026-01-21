@@ -62,11 +62,11 @@ class VectorStore:
         """
         Semantic search using vector.
         """
-        hits = self.client.search(
+        hits = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_vector,
+            query=query_vector,
             limit=limit
-        )
+        ).points
         
         results = []
         for hit in hits:
