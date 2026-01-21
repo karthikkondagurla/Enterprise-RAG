@@ -83,13 +83,8 @@ export default function ChatPage() {
     };
 
     const handleFeedback = (messageId: string, type: "positive" | "negative") => {
-        // TODO: Send feedback to backend
         console.log("Feedback:", { messageId, type });
-    };
-
-    const handleEscalate = () => {
-        // TODO: Implement escalation flow
-        alert("Connecting you to a human agent...");
+        // Feedback logged - no backend endpoint yet
     };
 
     return (
@@ -126,7 +121,6 @@ export default function ChatPage() {
                                         key={message.id}
                                         message={message}
                                         onFeedback={(type) => handleFeedback(message.id, type)}
-                                        onEscalate={handleEscalate}
                                     />
                                 ))}
                                 {isLoading && (
@@ -146,8 +140,7 @@ export default function ChatPage() {
                         <div className="border-t border-slate-200 p-4 bg-slate-50">
                             <ChatInput onSubmit={handleSendMessage} isLoading={isLoading} />
                             <p className="text-xs text-slate-400 mt-2 text-center">
-                                AI responses are generated from your knowledge base. Always verify critical
-                                information.
+                                AI responses are generated from your knowledge base.
                             </p>
                         </div>
                     </Card>

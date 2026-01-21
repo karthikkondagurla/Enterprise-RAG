@@ -2,6 +2,7 @@ import os
 import shutil
 from typing import List
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
@@ -15,6 +16,15 @@ from src.rag.pipeline import RAGPipeline
 load_dotenv()
 
 app = FastAPI(title="Enterprise RAG System API")
+
+# CORS - Allow frontend to call API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize components
 loader = DocumentLoader()

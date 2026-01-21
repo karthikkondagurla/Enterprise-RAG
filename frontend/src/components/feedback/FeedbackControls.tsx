@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ThumbsUp, ThumbsDown, MessageSquare } from "lucide-react";
+import { ThumbsUp, ThumbsDown } from "lucide-react";
 import {
     Tooltip,
     TooltipContent,
@@ -11,13 +11,11 @@ import {
 
 interface FeedbackControlsProps {
     onFeedback?: (type: "positive" | "negative") => void;
-    onEscalate?: () => void;
     disabled?: boolean;
 }
 
 export function FeedbackControls({
     onFeedback,
-    onEscalate,
     disabled = false,
 }: FeedbackControlsProps) {
     return (
@@ -56,24 +54,6 @@ export function FeedbackControls({
                     </TooltipTrigger>
                     <TooltipContent>
                         <p className="text-xs">Not helpful</p>
-                    </TooltipContent>
-                </Tooltip>
-
-                <Tooltip>
-                    <TooltipTrigger asChild>
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            className="h-8 px-3 text-xs text-slate-600 hover:text-blue-600 hover:border-blue-300"
-                            onClick={onEscalate}
-                            disabled={disabled}
-                        >
-                            <MessageSquare className="h-3 w-3 mr-1" />
-                            Talk to Human
-                        </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                        <p className="text-xs">Connect with a support agent</p>
                     </TooltipContent>
                 </Tooltip>
             </div>

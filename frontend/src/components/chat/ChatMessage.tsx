@@ -7,15 +7,13 @@ import { Message } from "@/types";
 import { CitationCard } from "@/components/citations/CitationCard";
 import { ConfidenceBadge } from "@/components/feedback/ConfidenceBadge";
 import { FeedbackControls } from "@/components/feedback/FeedbackControls";
-import { Badge } from "@/components/ui/badge";
 
 interface ChatMessageProps {
     message: Message;
     onFeedback?: (type: "positive" | "negative") => void;
-    onEscalate?: () => void;
 }
 
-export function ChatMessage({ message, onFeedback, onEscalate }: ChatMessageProps) {
+export function ChatMessage({ message, onFeedback }: ChatMessageProps) {
     const isUser = message.role === "user";
 
     return (
@@ -43,11 +41,6 @@ export function ChatMessage({ message, onFeedback, onEscalate }: ChatMessageProp
                     <span className="text-sm font-medium text-slate-900">
                         {isUser ? "You" : "AI Assistant"}
                     </span>
-                    {message.isCached && (
-                        <Badge variant="outline" className="text-xs">
-                            Cached
-                        </Badge>
-                    )}
                 </div>
 
                 {/* Message Text */}
@@ -78,7 +71,7 @@ export function ChatMessage({ message, onFeedback, onEscalate }: ChatMessageProp
                         {message.confidence !== undefined && (
                             <ConfidenceBadge confidence={message.confidence} />
                         )}
-                        <FeedbackControls onFeedback={onFeedback} onEscalate={onEscalate} />
+                        <FeedbackControls onFeedback={onFeedback} />
                     </div>
                 )}
             </div>
