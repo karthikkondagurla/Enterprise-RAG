@@ -36,6 +36,21 @@ services:
       - ./ollama_data:/root/.ollama
     restart: always
 
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rag-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://host.docker.internal:8000
+    depends_on:
+      - qdrant
+      - ollama
+    restart: always
+
 volumes:
   qdrant_storage:
   postgres_data:
